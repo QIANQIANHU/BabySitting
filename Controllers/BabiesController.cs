@@ -38,6 +38,12 @@ namespace BabySitter.Controllers
             return View("Index",allBabies );
         }
 
+        [HttpPost("babies/delete")]
+        public ActionResult DeleteAll()
+        {
+          Baby.ClearAll();
+          return View();
+        }
 
     }
 }
