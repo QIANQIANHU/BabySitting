@@ -1,7 +1,10 @@
 <h1>Baby register page</h1>
 <ul>
-  <li>@Model.GetBabyName()</li>
-  <li>@Model.GetBabyAge()</li>
-  <li>@Model.GetBabyParent()</li>
+    @foreach(var baby in Model)
+    {
+    <li>@baby.GetBabyName()</li>
+    @*<li>@baby.GetBabyAge()</li>
+    <li>@baby.GetBabyParent()</li>*@
+    }
 </ul>
-<a href="/babies/new">Add a new baby.</a>
+<a href="/babies/new">Add a new baby</a>
