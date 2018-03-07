@@ -2,11 +2,10 @@
 <ul>
     @foreach(var baby in Model)
     {
-    <li>@baby.GetBabyName()</li>
-    @*<li>@baby.GetBabyAge()</li>
-    <li>@baby.GetBabyParent()</li>*@
+      <li><a href="/babies/@baby.GetId()">@baby.GetBabyName()</a></li>
     }
 </ul>
+
 <form action="babies/delete" method="post">
   <button type="submit" name="button">Clear all items</button>
 </form>

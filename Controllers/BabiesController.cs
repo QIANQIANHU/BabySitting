@@ -21,21 +21,27 @@ namespace BabySitter.Controllers
             return View();
         }
 
+        [HttpGet("/babies/{id}")]
+        public ActionResult Details(int id)
+        {
+          Baby baby = Baby.Find(id);
+          return View(baby);
+        }
+
         [HttpPost("/babies")]
         public ActionResult Create()
         {
-            Baby newBaby = new Baby(Request.Form["new-name"]);
-            newBaby.Save();
-            // string name = Request.Form[("new-name")];
-            // string stringAge = Request.Form[("new-age")];
-            // string parent = Request.Form[("new-parent")];
-            // int age = int.Parse(stringAge);
-            //
-            // Baby newBaby = new Baby(name, age, parent);
-            // return View(newBaby);
+            string name = Request.Form[("new-name")];
+            string stringAge = Request.Form[("new-age")];
+            string parent = Request.Form[("new-parent")];
 
-            List<Baby> allBabies = Baby.GetAll();
-            return View("Index",allBabies );
+            int age = Int32.Parse(stringAge);
+
+            Baby newBaby = new Baby(name, age, parent);
+            newBaby.Save();
+
+            List<Baby> allBabies = Baby.GetAll();//List should be reviewed
+            return View("Index",allBabies);
         }
 
         [HttpPost("babies/delete")]
